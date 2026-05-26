@@ -20,7 +20,7 @@ export default function CalorieCounter({ calorieAmount = 1650, calorieGoal = 200
   ];
 
   return (
-    <div className="bg-white rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-2">
+    <div className="bg-white rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 relative">
       <h2 className="text-center text-purple-600 text-3xl font-bold mb-6">Calorie Intake</h2>
       <div 
         className="relative flex justify-center items-center min-h-[300px]"
@@ -145,31 +145,28 @@ export default function CalorieCounter({ calorieAmount = 1650, calorieGoal = 200
           </g>
         </svg>
         
-        <div 
-          className={`absolute top-1/2 left-full ml-6 -translate-y-1/2 bg-white/98 rounded-2xl p-5 shadow-xl border-2 border-purple-600 min-w-[280px] transition-all duration-300 ${
-            isHovered ? 'opacity-100 visible translate-x-0' : 'opacity-0 invisible -translate-x-4'
-          }`}
-        >
-          <p className="text-xl font-bold text-purple-600 mb-2">
-            {calorieAmount} / {calorieGoal} kcal
-          </p>
-          <p className="text-lg text-purple-800 mb-3">
-            {caloriePercentage}% of daily goal
-          </p>
-          <div className="pt-3 border-t border-gray-200 text-sm space-y-2">
-            {breakdown.map((item) => (
-              <div key={item.name} className="flex items-center text-gray-600">
-                <span 
-                  className="inline-block w-3 h-3 rounded-full mr-2"
-                  style={{ backgroundColor: item.color, border: item.name === 'Carbs' ? '1px solid #ddd' : 'none' }}
-                />
-                {item.name}: {item.amount} kcal
-              </div>
-            ))}
-          </div>
+      </div>
+      
+      {/* Calorie details - bottom right corner */}
+      <div className="absolute bottom-6 right-6 bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-purple-200 min-w-[240px]">
+        <p className="text-lg font-bold text-purple-600 mb-1">
+          {calorieAmount} / {calorieGoal} kcal
+        </p>
+        <p className="text-sm text-purple-800 mb-3">
+          {caloriePercentage}% of daily goal
+        </p>
+        <div className="pt-2 border-t border-gray-200 text-xs space-y-1.5">
+          {breakdown.map((item) => (
+            <div key={item.name} className="flex items-center text-gray-600">
+              <span 
+                className="inline-block w-2.5 h-2.5 rounded-full mr-2"
+                style={{ backgroundColor: item.color, border: item.name === 'Carbs' ? '1px solid #ddd' : 'none' }}
+              />
+              {item.name}: {item.amount} kcal
+            </div>
+          ))}
         </div>
       </div>
-      <p className="text-center text-gray-500 text-sm mt-4 italic">Hover to view details</p>
     </div>
   );
 }

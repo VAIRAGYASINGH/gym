@@ -14,7 +14,7 @@ export default function WaterTracker({ waterAmount = 1.8, waterGoal = 2.5 }: Wat
   const yPosition = 400 - fillHeight;
 
   return (
-    <div className="bg-white rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-2">
+    <div className="bg-white rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 relative">
       <h2 className="text-center text-purple-600 text-3xl font-bold mb-6">Water Intake</h2>
       <div 
         className="relative flex justify-center items-center min-h-[400px]"
@@ -152,20 +152,17 @@ export default function WaterTracker({ waterAmount = 1.8, waterGoal = 2.5 }: Wat
           />
         </svg>
         
-        <div 
-          className={`absolute top-1/2 left-full ml-6 -translate-y-1/2 bg-white/98 rounded-2xl p-5 shadow-xl border-2 border-purple-600 min-w-[200px] transition-all duration-300 ${
-            isHovered ? 'opacity-100 visible translate-x-0' : 'opacity-0 invisible -translate-x-4'
-          }`}
-        >
-          <p className="text-xl font-bold text-purple-600 mb-2">
-            {waterAmount}L / {waterGoal}L
-          </p>
-          <p className="text-lg text-purple-800">
-            {waterPercentage}% of daily goal
-          </p>
-        </div>
       </div>
-      <p className="text-center text-gray-500 text-sm mt-4 italic">Hover to view details</p>
+      
+      {/* Water details - bottom right corner */}
+      <div className="absolute bottom-6 right-6 bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-purple-200">
+        <p className="text-lg font-bold text-purple-600 mb-1">
+          {waterAmount}L / {waterGoal}L
+        </p>
+        <p className="text-sm text-purple-800">
+          {waterPercentage}% of daily goal
+        </p>
+      </div>
     </div>
   );
 }
