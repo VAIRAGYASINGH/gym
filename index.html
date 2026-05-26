@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack - Your Fitness Journey</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>FitTrack</h1>
+            <p class="tagline">Track Your Daily Fitness Goals</p>
+        </header>
+
+        <!-- Main Stats Section -->
+        <div class="stats-container">
+            <!-- Water Intake - Body Outline -->
+            <div class="stat-card">
+                <h2>Water Intake</h2>
+                <div class="body-outline-container">
+                    <svg class="body-outline" viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Body outline path -->
+                        <defs>
+                            <clipPath id="bodyClip">
+                                <!-- Head -->
+                                <ellipse cx="100" cy="40" rx="30" ry="35"/>
+                                <!-- Neck -->
+                                <rect x="90" y="70" width="20" height="15"/>
+                                <!-- Torso -->
+                                <ellipse cx="100" cy="140" rx="45" ry="70"/>
+                                <!-- Left arm -->
+                                <rect x="55" y="95" width="15" height="80" rx="7"/>
+                                <!-- Right arm -->
+                                <rect x="130" y="95" width="15" height="80" rx="7"/>
+                                <!-- Left leg -->
+                                <rect x="75" y="205" width="20" height="110" rx="10"/>
+                                <!-- Right leg -->
+                                <rect x="105" y="205" width="20" height="110" rx="10"/>
+                            </clipPath>
+                        </defs>
+                        
+                        <!-- Body outline stroke -->
+                        <g class="body-stroke">
+                            <!-- Head -->
+                            <ellipse cx="100" cy="40" rx="30" ry="35" fill="none" stroke="#333" stroke-width="2"/>
+                            <!-- Neck -->
+                            <rect x="90" y="70" width="20" height="15" fill="none" stroke="#333" stroke-width="2"/>
+                            <!-- Torso -->
+                            <ellipse cx="100" cy="140" rx="45" ry="70" fill="none" stroke="#333" stroke-width="2"/>
+                            <!-- Left arm -->
+                            <rect x="55" y="95" width="15" height="80" rx="7" fill="none" stroke="#333" stroke-width="2"/>
+                            <!-- Right arm -->
+                            <rect x="130" y="95" width="15" height="80" rx="7" fill="none" stroke="#333" stroke-width="2"/>
+                            <!-- Left leg -->
+                            <rect x="75" y="205" width="20" height="110" rx="10" fill="none" stroke="#333" stroke-width="2"/>
+                            <!-- Right leg -->
+                            <rect x="105" y="205" width="20" height="110" rx="10" fill="none" stroke="#333" stroke-width="2"/>
+                        </g>
+                        
+                        <!-- Water fill -->
+                        <rect class="water-fill" x="0" y="0" width="200" height="400" clip-path="url(#bodyClip)"/>
+                    </svg>
+                    <div class="info-popup water-info">
+                        <p class="amount"><span id="waterAmount">1.8</span>L / 2.5L</p>
+                        <p class="percentage"><span id="waterPercentage">72</span>% of daily goal</p>
+                    </div>
+                </div>
+                <p class="stat-label">Hover to view details</p>
+            </div>
+
+            <!-- Calorie Intake - Food Plate -->
+            <div class="stat-card">
+                <h2>Calorie Intake</h2>
+                <div class="plate-container">
+                    <svg class="food-plate" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Plate -->
+                        <circle cx="100" cy="100" r="90" fill="#f8f8f8" stroke="#ddd" stroke-width="3"/>
+                        <circle cx="100" cy="100" r="85" fill="none" stroke="#eee" stroke-width="2"/>
+                        
+                        <!-- Food sections -->
+                        <g class="food-sections">
+                            <!-- Protein (chicken - top right) -->
+                            <ellipse cx="120" cy="80" rx="25" ry="20" fill="#f4a460" class="food-item protein"/>
+                            
+                            <!-- Carbs (rice - top left) -->
+                            <ellipse cx="70" cy="80" rx="28" ry="22" fill="#fff8dc" class="food-item carbs"/>
+                            
+                            <!-- Veggies (bottom left) -->
+                            <ellipse cx="75" cy="120" rx="22" ry="20" fill="#90ee90" class="food-item veggies"/>
+                            
+                            <!-- Fruits (bottom right) -->
+                            <ellipse cx="120" cy="120" rx="20" ry="18" fill="#ff6b6b" class="food-item fruits"/>
+                            
+                            <!-- Healthy fats (center) -->
+                            <circle cx="100" cy="100" r="12" fill="#f0e68c" class="food-item fats"/>
+                        </g>
+                        
+                        <!-- Fork and Knife -->
+                        <g class="utensils">
+                            <line x1="30" y1="100" x2="15" y2="100" stroke="#999" stroke-width="2"/>
+                            <line x1="15" y1="85" x2="15" y2="115" stroke="#999" stroke-width="2"/>
+                            <line x1="170" y1="100" x2="185" y2="100" stroke="#999" stroke-width="2"/>
+                            <line x1="185" y1="85" x2="185" y2="100" stroke="#999" stroke-width="2"/>
+                        </g>
+                    </svg>
+                    <div class="info-popup calorie-info">
+                        <p class="amount"><span id="calorieAmount">1650</span> / 2000 kcal</p>
+                        <p class="percentage"><span id="caloriePercentage">83</span>% of daily goal</p>
+                        <div class="calorie-breakdown">
+                            <div><span class="dot protein-dot"></span> Protein: 520 kcal</div>
+                            <div><span class="dot carbs-dot"></span> Carbs: 680 kcal</div>
+                            <div><span class="dot veggies-dot"></span> Veggies: 150 kcal</div>
+                            <div><span class="dot fruits-dot"></span> Fruits: 200 kcal</div>
+                            <div><span class="dot fats-dot"></span> Fats: 100 kcal</div>
+                        </div>
+                    </div>
+                </div>
+                <p class="stat-label">Hover to view details</p>
+            </div>
+        </div>
+
+        <!-- Weight Progress Graph -->
+        <div class="graph-section">
+            <h2>Weight Progress</h2>
+            <div class="graph-container">
+                <canvas id="weightGraph"></canvas>
+            </div>
+            <div class="graph-stats">
+                <div class="stat-item">
+                    <span class="label">Current Weight:</span>
+                    <span class="value">75.2 kg</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">Starting Weight:</span>
+                    <span class="value">82.0 kg</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">Goal Weight:</span>
+                    <span class="value">70.0 kg</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">Progress:</span>
+                    <span class="value success">-6.8 kg</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
